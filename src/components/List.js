@@ -7,18 +7,21 @@ function List(props) {
             <td>{employee.occupation}</td>
         </tr>
     ))
-    if(this)
+        console.log(employeeArray)
+    //sort by currentsort
+    // first name inverted
+    
     return (
         <table className=" container  table table-bordered table-striped">
             <thead className="thead">
                 <tr className="table-secondary">
-                    <th className="th-hover" className = {props.currentSort === "first" ? "nav-link active" : "nav-link"} onClick={() => props.handleSortChange("first")}>First Name</th>
+                    <th  className={props.currentSort === "firstname-invert" ? "nav-link active" : "nav-link"} onClick={() => props.handleSortChange("first")}>First Name</th>
                     <th>Last Name</th>
                     <th>Occupation</th>
                 </tr>
             </thead>
             <tbody className="">
-                {}
+                {employeeArray}
             </tbody>
         </table>
     );
