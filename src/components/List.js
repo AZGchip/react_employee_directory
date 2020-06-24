@@ -113,6 +113,7 @@ class List extends React.Component {
                 return 0
             }
         }
+        //changes state to update the table with sorted information
         this.setState((state, props) => ({
             employeeArray: employees.sort(compareString).map(employee => (
                 <tr className="" key={employee.id}>
@@ -144,57 +145,6 @@ class List extends React.Component {
         );
     }
 }
-// const listArray = [
-//         {
-//             firstName: "Andrew",
-//             lastName: "Zinski",
-//             occupation: "student"
-//         },
-//         {
-//             firstName: "Brian",
-//             lastName: "Kilpatrick",
-//             occupation: "Freelance Pizza Web Designer"
-//         },
-//         {
-//             firstName: "Jonathan",
-//             lastName: "Zinski",
-//             occupation: "Software Sales"
-//         },
-//         {
-//             firstName: "bill",
-//             lastName: "bob",
-//             occupation: "fry cook"
-//         }
-//     ]
-//     function buildTable() {
-//         let list;
-//         for (let i = 0; i < listArray.length; i++) {
-//             list += (
-//                 <tr>
-//                     <td>{listArray[i].firstName}</td>
-//                     <td>{listArray[i].lastName}</td>
-//                     <td>{listArray[i].occupation}</td>
-//                 </tr>)
-//         }
-//         return list
-//     }
-//     let name
-//     let employeeTable = (<table>
-//         <thead></thead>
-//         <tr>
-//             <th>
-//                 <a onClick={() => props.handleDisplayChange("Home")}>
-//                 First Name
-//                 </a>
-//             </th>
-//             <th>Last Name</th>
-//             <th>Occupation</th>
-//         </tr>
-//         {buildTable()}
-//     </table>)
-
-
-
 
 
 export default List
