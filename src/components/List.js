@@ -67,7 +67,6 @@ class List extends Component {
     handleFilterChange = event => {
         const name = event.target.name
         const value = event.target.value
-        console.log("this is name", event.target.name)
         //filters based on input string
         var filteredEmployee;
         if (value) {
@@ -79,9 +78,9 @@ class List extends Component {
         }
         else {
             filteredEmployee = employees
-            console.log("else")
+            
         }
-        console.log(filteredEmployee)
+        
         this.setState({
             filteredArray: filteredEmployee,
             employeeArray: filteredEmployee.map(employee => (
@@ -92,7 +91,6 @@ class List extends Component {
                 </tr>
             ))
         });
-        console.log("this is filtered Array", this.state.filteredArray)
     };
     //sort
     handleSortChange = (param) => {
