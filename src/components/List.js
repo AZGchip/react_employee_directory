@@ -34,9 +34,9 @@ let employees = [
     },
     {
         id: 6,
-        firstName: "chip",
-        lastName: "reeds",
-        occupation: "cashier"
+        firstName: "Chip",
+        lastName: "Reeds",
+        occupation: "Cashier"
     }
 ]
 let sortCase = {}
