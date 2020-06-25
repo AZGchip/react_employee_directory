@@ -4,33 +4,33 @@ import Filter from "./Filter"
 let employees = [
     {
         id: 1,
-        firstName: "andy",
-        lastName: "brook",
-        occupation: "intern"
+        firstName: "Andy",
+        lastName: "Brook",
+        occupation: "Intern"
     },
     {
         id: 2,
         firstName: "Brian",
-        lastName: "chase",
-        occupation: "management"
+        lastName: "Chase",
+        occupation: "Management"
     },
     {
         id: 3,
         firstName: "Jonathan",
-        lastName: "davis",
+        lastName: "Davis",
         occupation: "Sales"
     },
     {
         id: 4,
-        firstName: "william",
-        lastName: "smith",
+        firstName: "William",
+        lastName: "Smith",
         occupation: "Food delivery"
     },
     {
         id: 5,
-        firstName: "brook",
-        lastName: "johnson",
-        occupation: "recruitment"
+        firstName: "Brook",
+        lastName: "Johnson",
+        occupation: "Recruitment"
     },
     {
         id: 6,
@@ -42,7 +42,7 @@ let employees = [
 let sortCase = {}
 let filteredArray = {};
 
-
+//sorts , and/or filters the "employees" as well as displays a table of them.
 class List extends Component {
     state = {
         employees,
@@ -63,7 +63,7 @@ class List extends Component {
             filteredArray: employees
         }
     }
-
+    //filter
     handleFilterChange = event => {
         const name = event.target.name
         const value = event.target.value
@@ -94,6 +94,7 @@ class List extends Component {
         });
         console.log("this is filtered Array", this.state.filteredArray)
     };
+    //sort
     handleSortChange = (param) => {
         // y/n is inverted
         let invert;
@@ -161,7 +162,7 @@ class List extends Component {
 
     }
 
-
+//returns the table and filter input box
     render() {
         return (
             <div>
