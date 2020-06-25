@@ -1,5 +1,6 @@
-import React from "react"
-import { render } from "@testing-library/react";
+
+import React, { Component } from "react"
+import Filter from "./Filter"
 let employees = [
     {
         id: 1,
@@ -30,10 +31,16 @@ let employees = [
         firstName: "Andrea",
         lastName: "Zinski",
         occupation: "recruitment"
+    },
+    {
+        id: 6,
+        firstName: "Steve",
+        lastName: "Zinski",
+        occupation: "Pizza Making CEO"
     }
 ]
 let sortCase = {}
-
+let filteredArray = {};
 
 
 
@@ -43,10 +50,12 @@ let sortCase = {}
 
 
 
-class List extends React.Component {
+class List extends Component {
     state = {
         employees,
-        sortCase
+        filteredArray,
+        sortCase,
+        filter: "",
     }
     constructor(props) {
         super(props)
@@ -57,9 +66,41 @@ class List extends React.Component {
                     <td>{employee.lastName}</td>
                     <td>{employee.occupation}</td>
                 </tr>
-            ))
+            )),
+            filteredArray: employees
         }
     }
+
+    handleFilterChange = event => {
+        const name = event.target.name
+        const value = event.target.value
+        console.log("this is name", event.target.name)
+        //filters based on input string
+        var filteredEmployee;
+        if (value) {
+            filteredEmployee = employees.filter(function (e) {
+                
+                let key = Object.keys(e)[1]
+                return e[key].toUpperCase().includes(event.target.value.toUpperCase())
+            })
+        }
+        else{
+            filteredEmployee = employees
+            console.log("else")
+        }
+        console.log(filteredEmployee)
+        this.setState({
+            filteredArray: filteredEmployee,
+            employeeArray: filteredEmployee.map(employee => (
+                <tr className="" key={employee.id}>
+                    <td>{employee.firstName}</td>
+                    <td>{employee.lastName}</td>
+                    <td>{employee.occupation}</td>
+                </tr>
+            ))
+        });
+        console.log("this is filtered Array",this.state.filteredArray)
+    };
     handleSortChange = (param) => {
         // y/n is inverted
         let invert;
@@ -76,7 +117,7 @@ class List extends React.Component {
             this.setState({ sortCase: param })
             invert = false;
         }
-        
+
         //compares an array of objects and sorts objects based on selected type using given param.
         function compareString(a, b) {
             switch (param) {
@@ -115,7 +156,7 @@ class List extends React.Component {
         }
         //changes state to update the table with sorted information
         this.setState((state, props) => ({
-            employeeArray: employees.sort(compareString).map(employee => (
+            employeeArray: state.filteredArray.sort(compareString).map(employee => (
                 <tr className="" key={employee.id}>
                     <td>{employee.firstName}</td>
                     <td>{employee.lastName}</td>
@@ -124,24 +165,30 @@ class List extends React.Component {
             ))
         }));
 
-        console.log(employees.sort(compareString))
+
     }
 
 
     render() {
         return (
-            <table className=" container  table table-bordered table-striped">
-                <thead className="thead">
-                    <tr className="table-secondary">
-                        <th onClick={() => this.handleSortChange("firstname")}>First Name</th>
-                        <th onClick={() => this.handleSortChange("lastname")}>Last Name</th>
-                        <th onClick={() => this.handleSortChange("occupation")}>Occupation</th>
-                    </tr>
-                </thead>
-                <tbody className="">
-                    {this.state.employeeArray}
-                </tbody>
-            </table>
+            <div>
+                <Filter
+                    search={this.state.search}
+                    handleFilterChange={this.handleFilterChange}
+                />
+                <table className=" container  table table-bordered table-striped">
+                    <thead className="thead">
+                        <tr className="table-secondary">
+                            <th onClick={() => this.handleSortChange("firstname")}>First Name</th>
+                            <th onClick={() => this.handleSortChange("lastname")}>Last Name</th>
+                            <th onClick={() => this.handleSortChange("occupation")}>Occupation</th>
+                        </tr>
+                    </thead>
+                    <tbody className="">
+                        {this.state.employeeArray}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
