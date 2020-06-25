@@ -4,50 +4,43 @@ import Filter from "./Filter"
 let employees = [
     {
         id: 1,
-        firstName: "Andrew",
-        lastName: "Zinski",
-        occupation: "student"
+        firstName: "andy",
+        lastName: "brook",
+        occupation: "intern"
     },
     {
         id: 2,
         firstName: "Brian",
-        lastName: "Kilpatrick",
-        occupation: "Freelance Pizza Web Designer"
+        lastName: "chase",
+        occupation: "management"
     },
     {
         id: 3,
         firstName: "Jonathan",
-        lastName: "Zinski",
-        occupation: "Software Sales"
+        lastName: "davis",
+        occupation: "Sales"
     },
     {
         id: 4,
-        firstName: "Wesley",
-        lastName: "Babcock",
+        firstName: "william",
+        lastName: "smith",
         occupation: "Food delivery"
     },
     {
         id: 5,
-        firstName: "Andrea",
-        lastName: "Zinski",
+        firstName: "brook",
+        lastName: "johnson",
         occupation: "recruitment"
     },
     {
         id: 6,
-        firstName: "Steve",
-        lastName: "Zinski",
-        occupation: "Pizza Making CEO"
+        firstName: "chip",
+        lastName: "reeds",
+        occupation: "cashier"
     }
 ]
 let sortCase = {}
 let filteredArray = {};
-
-
-
-//sort by currentsort
-
-
-
 
 
 class List extends Component {
@@ -79,12 +72,12 @@ class List extends Component {
         var filteredEmployee;
         if (value) {
             filteredEmployee = employees.filter(function (e) {
-                
+
                 let key = Object.keys(e)[1]
                 return e[key].toUpperCase().includes(event.target.value.toUpperCase())
             })
         }
-        else{
+        else {
             filteredEmployee = employees
             console.log("else")
         }
@@ -99,7 +92,7 @@ class List extends Component {
                 </tr>
             ))
         });
-        console.log("this is filtered Array",this.state.filteredArray)
+        console.log("this is filtered Array", this.state.filteredArray)
     };
     handleSortChange = (param) => {
         // y/n is inverted
@@ -192,6 +185,4 @@ class List extends Component {
         );
     }
 }
-
-
 export default List
